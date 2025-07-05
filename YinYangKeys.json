@@ -1,0 +1,8 @@
+[
+    {
+        "key": "abc123",
+        "owner": "TestUser",
+        "expiry": "2099-01-01 00:00:00",
+        "telegram_id": null
+    }
+]
