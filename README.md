@@ -1,13 +1,13 @@
-# 🧪 YinYang Black Market CPM Bot 🛡️
+# 🧪 YinYang Black Market CPM 🛡️
 
 ⚔️ Sistem automatik jual beli akses tools Car Parking Multiplayer (CPM) yang eksklusif dan penuh dengan gaya dark/hacker. Dibina untuk digunakan melalui Telegram + API auto validate key.
 
 ## 🔥 Fungsi Utama
 
-- ✅ **Sistem Key Otomatik**: 1 hari, 7 hari, 30 hari, Lifetime
+- ✅ **Sistem Key automatik**: 1 hari, 7 hari, 30 hari, Lifetime
 - 🎯 **Key Validator**: Semak key & expiry
 - 🧠 **Telegram Bot Interaktif**: `/start`, `/key`, `/beli`, `/status`, `/hubungi_admin`
-- 🔧 **Integrasi CPM Nuker Tools**: login, set money, clone account, dll.
+- 🔧 **Integrasi Black Market CPM Tools**: login, set money, clone account, dll.
 - 🎁 **Kod Promosi**: `yinhensem` untuk 1 hari percuma
 
 ## 🧱 Struktur Fail
@@ -36,7 +36,7 @@
 
 🔹 Termux / iSH (Local)
     pkg install python git
-    git clone https://github.com/isszimatsyukri/BlackMarketCPM
+    git clone  (https://github.com/yinyangprime/BlackMarketCPM)
     cd BlackMarketCPM
     pip install -r requirements.txt
     python3 run.py
