@@ -1,15 +1,23 @@
-import asyncio
+import os
 import threading
-import main  # API (Flask)
-from yinyangbot import run_bot  # Telegram Bot
+import asyncio
 
-def start_flask():
-    main.app.run(host="0.0.0.0", port=8080)
+# Jalankan bot Telegram
+def start_bot():
+    from yinyangbot import main as bot_main
+    asyncio.run(bot_main())
 
-def start_telegram():
-    asyncio.run(run_bot())
+# Jalankan Flask API
+def start_api():
+    os.system("python3 main.py")
 
-if __name__ == "__main__":
-    flask_thread = threading.Thread(target=start_flask)
-    flask_thread.start()
-    start_telegram()
+if __name__ == '__main__':
+    print("🚀 Starting YinYang Black Market System...")
+
+    # Thread untuk API Flask
+    api_thread = threading.Thread(target=start_api)
+    api_thread.start()
+
+    # Thread untuk Telegram Bot
+    bot_thread = threading.Thread(target=start_bot)
+    bot_thread.start()
