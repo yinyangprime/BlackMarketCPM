@@ -1,21 +1,17 @@
 from telegram import Update, ReplyKeyboardMarkup
-from telegram.ext import (
-    ApplicationBuilder,
-    CommandHandler,
-    ContextTypes
-)
+from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 import json
 from datetime import datetime
 import os
 
-BOT_TOKEN = os.getenv("BOT_TOKEN")  # Ambil dari environment (Render / Replit)
+BOT_TOKEN = os.getenv("BOT_TOKEN")
 KEYS_FILE = "YinYangKeys.json"
 PROMO_CODE = "yinhensem"
+ADMIN_ID = 754978535
 
-# Fungsi semak key
 def semak_key(user_key, telegram_id=None):
     try:
-        with open(KEYS_FILE, 'r') as f:
+        with open(KEYS_FILE, ' 'r') as f:
             keys = json.load(f)
     except:
         return False, "❌ Database kunci tidak dijumpai."
@@ -30,53 +26,44 @@ def semak_key(user_key, telegram_id=None):
             return True, "✅ Key sah & aktif!"
     return False, "❌ Key tidak sah atau telah tamat tempoh."
 
-# /start command
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     msg = f"""
 👑 Selamat Datang ke *Yin Yang Black Market Bot* 👑
-💻 Sistem jual beli key CPM (Car Parking Multiplayer) tersedia secara automatik.
-
 📦 Harga Key:
 • 1 Hari – RM10
 • 7 Hari – RM30
 • 30 Hari – RM50
 • Lifetime – RM150
 
-🎁 Guna kod promosi: *{PROMO_CODE}* untuk key 1 hari percuma!
+🎁 Kod promosi: *{PROMO_CODE}* untuk 1 hari percuma!
 
 🔧 Arahan:
-• /beli — Beli key
-• /key — Semak key
-• /status — Status key
-• /hubungi_admin — Bantuan
-
-⚠️ Semua urusan dipantau. Sistem ini hak milik eksklusif *Yin Yang / TikTok: Yin Yang*.
+/beli — Beli key
+/key — Semak key
+/status — Status bot
+/hubungi_admin — Bantuan
     """
     await update.message.reply_text(msg, parse_mode="Markdown")
 
-# /key command
 async def key(update: Update, context: ContextTypes.DEFAULT_TYPE):
     args = context.args
     if not args:
-        await update.message.reply_text("❗ Sila masukkan key. Contoh: `/key abc123`", parse_mode="Markdown")
+        await update.message.reply_text("❗ Masukkan key. Contoh: /key ABC123", parse_mode="Markdown")
         return
-    key = args[0]
-    valid, msg = semak_key(key, update.effective_user.id)
+    user_key = args[0]
+    valid, msg = semak_key(user_key, update.effective_user.id)
     await update.message.reply_text(msg)
 
-# /beli command
 async def beli(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("🪙 Untuk pembelian key, sila buat bayaran ke QR DuitNow dan hantarkan resit kepada admin. Harga:\n\n1 Hari – RM10\n7 Hari – RM30\n30 Hari – RM50\nLifetime – RM150\n\nKod promosi: *yinhensem* untuk 1 hari percuma!\n\nAdmin: @xiixmmi", parse_mode="Markdown")
+    await update.message.reply_text("🪙 Beli key:
+Bayar ke QR DuitNow & hantar resit ke admin: @xiixmmi")
 
-# /status command
 async def status(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("⚙️ Bot aktif dan sedia menerima arahan.\nGunakan /start untuk melihat menu penuh.")
+    await update.message.reply_text("⚙️ Bot aktif dan berfungsi.")
 
-# /hubungi_admin
 async def hubungi_admin(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("👤 Hubungi admin di Telegram: @xiixmmi")
+    await update.message.reply_text("👤 Admin: @xiixmmi")
 
-# Start bot
 async def run_bot():
     app = ApplicationBuilder().token(BOT_TOKEN).build()
     app.add_handler(CommandHandler("start", start))
