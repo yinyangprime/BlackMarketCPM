@@ -1,8 +1,20 @@
 [
-    {
-        "key": "abc123",
-        "owner": "TestUser",
-        "expiry": "2099-01-01 00:00:00",
-        "telegram_id": null
-    }
+  {
+    "key": "ABC123",
+    "plan": "1hari",
+    "expiry": "2025-07-06 23:59:59",
+    "telegram_id": null
+  },
+  {
+    "key": "DEF456",
+    "plan": "7hari",
+    "expiry": "2025-07-11 23:59:59",
+    "telegram_id": null
+  },
+  {
+    "key": "GHI789",
+    "plan": "lifetime",
+    "expiry": null,
+    "telegram_id": null
+  }
 ]
